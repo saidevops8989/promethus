@@ -44,4 +44,19 @@ WantedBy=multi-user.target
    24  systemctl start prometheus
    25  systemctl enable prometheus
    26  systemctl status prometheus
-   27  history 
+   
+
+
+####Adding node to the promethus#####
+
+vi /etc/prometheus/prometheus.yml
+
+####add at the bottom
+
+- job_name: "nodes"
+    static_configs:
+      - targets: ['node01:9100', 'node02:9100']
+
+systemctl restart prometheus
+
+
