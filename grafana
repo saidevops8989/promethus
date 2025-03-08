@@ -1,0 +1,23 @@
+dnf -y install grafana 
+
+vi /etc/grafana/grafana.ini
+# line 35 : specify protocol ⇒ possible to change to [https], [h2], [socket]
+
+protocol = http
+# line 38 : IP address Grafana listens (listen all with [0.0.0.0])
+
+http_addr = 0.0.0.0
+# line 41 : specify port ⇒ possible to change to other port
+
+http_port = 3000
+# line 44 : specify domain name ⇒ possible to change to your domain name
+
+domain = localhost 
+
+#####for api issues#####
+setenforce 0
+systemctl enable --now grafana-server 
+firewall-cmd --add-port=3000/tcp 
+firewall-cmd --runtime-to-permanent 
+
+
