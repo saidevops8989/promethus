@@ -20,4 +20,7 @@ systemctl enable --now grafana-server
 firewall-cmd --add-port=3000/tcp 
 firewall-cmd --runtime-to-permanent 
 
+NOTE if you see this error --- on grafanaconnect: permission denied - There was an error returned querying the Prometheus API.
+
+setsestatus to    ###setenforce 0
 
